@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <style>
+          
+
+
+        input:focus {
+            outline: none;
+        }
+
+        input ,input::placeholder {
+        text-indent: 10px;
+        }
+        
+        .title {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            line-height: 100px;
+            margin-top: 50px;
+            background-color: #000;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            width: 100%;
+            color: #fff;
+            margin: 0 auto;
+            margin-left: 20px;
+            font-size: 30px;
+        }
+
+        .text {
+            height: 100px;
+            line-height: 100px;
+        }
+
+        span {
+            margin-left: 20px;
+            font-size: 17px;
+        }
+
+        .content{
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        input {
+            float: left;
+            width: 100%;
+            height: 35px;
+            border-radius: 7px 0 0 7px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .plus {
+            width: 60px;
+            float: right;
+            height: 39px;
+            margin-left: -2px;
+            color: #fff;
+            background-color: #000;
+            border: 1px solid #000;
+            border-radius: 0 7px 7px 0;
+        }
+
+        #tdOl {
+            list-style-position: inside;  
+            padding-left: 0;
+            margin-left: 0; 
+            text-indent: 10px;
+        }
+
+        .tdLi {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #e4e4e4;
+            border-radius: 4px;
+        }
+
+        .tdSpan {
+            margin-left: 0;
+        }
+
+        .tdButton {
+            float: right;
+            margin-top: 5px;
+            margin-right: 5px;
+            border: 1px solid #fff;
+            background-color: #fff;
+        }
+
+    </style>
+
+    
+    <script>
+
+        
+        function btn1Click() {
+
+            let todoBox = document.getElementById('todoText');
+            let text = todoBox.value;
+            let ol = document.getElementById('tdOl');
+            let li = document.createElement('li');
+            li.classList.add('tdLi');
+            ol.appendChild(li);
+            let span = document.createElement('span');
+            span.classList.add('tdSpan')
+            span.innerText = text;
+            li.appendChild(span);
+            let button = document.createElement('button');
+            button.classList.add('tdButton');
+            button.addEventListener('click', function(){
+                this.parentNode.remove();
+            })
+            button.innerText = 'X';
+            li.appendChild(button);
+            todoBox.value = null;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="title">
+        <h2>ToDo List</h2>
+    </div>
+    <div class="text">
+        <span>오늘 할일을 작성해 보세요.</span><br>
+    </div>
+
+    <div class="content">
+        <input type="text" placeholder="할일을 입력하세요." id="todoText"/>
+        <button onclick="btn1Click()" class="plus">추가</button>
+    </div>
+    <ol id="tdOl">
+
+    </ol>
+</body>
+</html>
+
